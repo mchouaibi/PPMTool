@@ -46,4 +46,5 @@ public class ProjectController {
         projectService.deleteProjectByIdentifier(projectId.toUpperCase());
         return new ResponseEntity<String>("Project '" + projectId + "' was deleted!", HttpStatus.OK);
     }
+    
 }
