@@ -30,6 +30,15 @@ class UpdateProject extends Component {
 
     onSubmit(e) {
         e.preventDefault()
+        const newProject = {
+            "id": this.state.id,
+            "projectName": this.state.projectName,
+            "projectIdentifier": this.state.projectIdentifier,
+            "description": this.state.description,
+            "startDate": this.state.startDate,
+            "endDate": this.state.endDate
+        }
+        this.props.createProject(newProject, this.props.history)
     }
 
     componentDidMount() {
