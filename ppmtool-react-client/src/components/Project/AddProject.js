@@ -11,20 +11,27 @@ class AddProject extends Component {
             "projectIdentifier": "",
             "description": "",
             "startDate": "",
-            "endDate": ""
+            "endDate": "",
+            errors: {}
         }
 
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
     }
 
-        onChange(e) {
-            this.setState(
-                {
-                    [e.target.name]: e.target.value
-                }
-            )
+    onChange(e) {
+        this.setState(
+            {
+                [e.target.name]: e.target.value
+            }
+        )
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.errors) {
+            this.setState({errors: nextProps.errors})
         }
+    }
 
     onSubmit(e) {
         e.preventDefault()
@@ -39,8 +46,10 @@ class AddProject extends Component {
     }
     
     render() {
+        const {errors} = this.state
         return (
             <div className="project">
+            <h1>{errors.projectName}</h1>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
@@ -76,6 +85,11 @@ class AddProject extends Component {
 }
 
 AddProject.propTypes={
-    createProject: PropTypes.func.isRequired
+    createProject: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
 }
-export default connect(null, {createProject})(AddProject) ;
+
+const mapStateToProps = state => ({
+    errors: state.errors
+})
+export default connect(mapStateToProps, {createProject})(AddProject) ;
