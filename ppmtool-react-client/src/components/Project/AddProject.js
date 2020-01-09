@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {createProject} from '../../actions/projectActions'
+import {classnames} from 'classnames'
 
 class AddProject extends Component {
     constructor() {
@@ -49,7 +50,6 @@ class AddProject extends Component {
         const {errors} = this.state
         return (
             <div className="project">
-            <h1>{errors.projectName}</h1>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
@@ -57,13 +57,20 @@ class AddProject extends Component {
                             <hr />
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
-                                    <input type="text" className="form-control form-control-lg " placeholder="Project Name" name="projectName" value={this.state.projectName} onChange={this.onChange}/>
+                                    <input type="text" className="form-control form-control-lg"
+                                            placeholder="Project Name" 
+                                            name="projectName" 
+                                            value={this.state.projectName} 
+                                            onChange={this.onChange}/>
+                                            <small>{errors.projectName}</small>
                                 </div>
                                 <div className="form-group">
                                     <input type="text" className="form-control form-control-lg" placeholder="Unique Project ID" name="projectIdentifier" value={this.state.projectIdentifier} onChange={this.onChange}/>
+                                    <small>{errors.projectIdentifier}</small>
                                 </div>
                                 <div className="form-group">
                                     <textarea className="form-control form-control-lg" placeholder="Project Description" name="description" value={this.state.description} onChange={this.onChange}></textarea>
+                                    <small>{errors.description}</small>
                                 </div>
                                 <h6>Start Date</h6>
                                 <div className="form-group">
@@ -92,4 +99,4 @@ AddProject.propTypes={
 const mapStateToProps = state => ({
     errors: state.errors
 })
-export default connect(mapStateToProps, {createProject})(AddProject) ;
+export default connect(mapStateToProps, {createProject})(AddProject)
