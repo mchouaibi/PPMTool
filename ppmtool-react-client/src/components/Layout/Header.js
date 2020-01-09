@@ -12,7 +12,6 @@ import Dashboard from '../Dashboard';
 class Header extends Component {
     render() {
         return(
-            <Router>
                 <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
                     <div className="container">
                         <Link className="navbar-brand" to="/dashboard">
@@ -47,10 +46,7 @@ class Header extends Component {
                     </div>
                 </nav>
 
-                <Switch>
-                    <Route exact path="/dashboard" component={Dashboard} />
-                </Switch>
-            </Router>
+            
         )
     }
 }
