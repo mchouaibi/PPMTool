@@ -13,9 +13,9 @@ class Header extends Component {
     render() {
         return(
             <Router>
-                <nav className="navbar navbar-expand-sm navbar-dark mb-4">
+                <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
                     <div className="container">
-                        <Link className="navbar-brand" to="/">
+                        <Link className="navbar-brand" to="/dashboard">
                             Personal Project Management Tool
                         </Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
@@ -25,7 +25,7 @@ class Header extends Component {
                         <div className="collapse navbar-collapse" id="mobile-nav">
                             <ul className="navbar-nav mr-auto">
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/">
+                                    <Link className="nav-link" to="/dashboard">
                                         Dashboard
                                     </Link>
                                 </li>
@@ -48,8 +48,7 @@ class Header extends Component {
                 </nav>
 
                 <Switch>
-                    <Route exact path="/"><Dashboard /></Route>
-                    <Route exact path="/dashboard"><Dashboard /></Route>
+                    <Route exact path="/dashboard" component={Dashboard} />
                 </Switch>
             </Router>
         )
