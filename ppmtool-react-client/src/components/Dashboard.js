@@ -4,8 +4,15 @@ import {
        } from 'react-router-dom'
 import ProjectButton from './Project/ProjectButton'
 import ProjectItem from './Project/ProjectItem'
+import {connect} from 'react-redux'
+import {getProjects} from '../actions/projectActions'
+import Proptypes from 'prop-types'
 
 class Dashboard extends Component {
+    componentDidMount() {
+        this.props.getProjects()
+    }
+
     render() {
         return(
             <Router>
@@ -30,4 +37,13 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard
+Dashboard.propTypes = {
+    project: Proptypes.object.isRequired,
+    getProjects: Proptypes.func.isRequired
+}
+
+const mapStateToProps = state =>({
+    project: state.project
+})
+
+export default connect(mapStateToProps, {getProjects})(Dashboard)
