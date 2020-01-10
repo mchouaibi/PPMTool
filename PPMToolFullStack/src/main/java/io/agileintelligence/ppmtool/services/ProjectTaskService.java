@@ -8,7 +8,6 @@ import io.agileintelligence.ppmtool.repositories.BacklogRepository;
 import io.agileintelligence.ppmtool.repositories.ProjectRepository;
 import io.agileintelligence.ppmtool.repositories.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -49,5 +48,9 @@ public class ProjectTaskService {
             throw new ProjectNotFoundException("Project '" + id + "' does not exist");
         }
         return projectTaskRepository.findByProjectIdentifierOrderByPriority(id);
+    }
+
+    public ProjectTask findByProjectSequence(String backlogId, String projectTaskId) {
+        return projectTaskRepository.findByProjectSequence(backlogId, projectTaskId);
     }
 }
