@@ -5,6 +5,7 @@ import io.agileintelligence.ppmtool.domain.ProjectTask;
 import io.agileintelligence.ppmtool.repositories.BacklogRepository;
 import io.agileintelligence.ppmtool.repositories.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,6 +20,7 @@ public class ProjectTaskService {
         projectTask.setBacklog(backlog);
         Integer backLogSequence = backlog.getPTSequence();
         backLogSequence++;
+        backlog.setPTSequence(backLogSequence);
         projectTask.setProjectSequence(projectIdentifier + "-" + backLogSequence);
         projectTask.setProjectIdentifier(projectIdentifier);
 
@@ -26,9 +28,13 @@ public class ProjectTaskService {
             projectTask.setPriority(3);
         }
 
-        if(projectTask.getStatus() == "" || projectTask.getStatus() == null)
+        if(projectTask.getStatus().equals("") || projectTask.getStatus() == null)
             projectTask.setStatus("TO_DO");
 
         return projectTaskRepository.save(projectTask);
+    }
+
+    public Iterable<ProjectTask> findBacklogById(String backlogId) {
+        return projectTaskRepository.findByProjectIdentifierOrderByPriority(backlogId);
     }
 }
