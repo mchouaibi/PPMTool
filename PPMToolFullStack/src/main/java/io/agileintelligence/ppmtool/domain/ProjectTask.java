@@ -58,7 +58,7 @@ public class ProjectTask {
     protected void onCreate() {
         this.createdAt = new Date();
     }
-    @PrePersist
+    @PreUpdate
     protected void onUpdate() {
         this.updatedAt = new Date();
     }
