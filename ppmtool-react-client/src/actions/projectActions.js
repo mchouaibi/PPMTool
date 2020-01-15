@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {GET_ERRORS, GET_PROJECTS, GET_PROJECT, DELETE_PROJECT} from './types'
+
 // passes to reducer
 export const createProject=(project, history) => async dispatch => {
     try {
@@ -41,5 +42,4 @@ export const deleteProject = (id, history) => async dispatch => {
             payload: id
         })
     }
-    
 }

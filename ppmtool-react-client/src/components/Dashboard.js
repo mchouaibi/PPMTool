@@ -1,7 +1,4 @@
 import React, {Component} from 'react'
-import { 
-        BrowserRouter as Router 
-       } from 'react-router-dom'
 import ProjectButton from './Project/ProjectButton'
 import ProjectItem from './Project/ProjectItem'
 import {connect} from 'react-redux'
