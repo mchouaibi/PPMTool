@@ -62,7 +62,7 @@ public class ProjectTaskService {
         }
 
         // Check if task exists
-        ProjectTask projectTask = projectTaskRepository.findByProjectSequence(projectTaskId + "-" + backlogId);
+        ProjectTask projectTask = projectTaskRepository.findByProjectSequence(projectTaskId);
         if(projectTask == null) {
             throw new ProjectNotFoundException("Task '" + projectTaskId + "' does not exist");
         }
@@ -73,8 +73,8 @@ public class ProjectTaskService {
         return projectTask;
     }
 
-    public ProjectTask updateByProjectSequence(ProjectTask updatedTask, String backlogId) {
-        ProjectTask projectTask = projectTaskRepository.findByProjectSequence(updatedTask.getProjectSequence());
+    public ProjectTask updateByProjectSequence(ProjectTask updatedTask, String backlogId, String projectTaskId) {
+        ProjectTask projectTask = findByProjectSequence(backlogId, projectTaskId);
         projectTask = updatedTask;
         return projectTaskRepository.save(projectTask);
     }
