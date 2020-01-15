@@ -10,11 +10,22 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-// Connect Service to
+
 @RestController
+// Set base mapping to api/project
 @RequestMapping("api/project")
+// Allows requests from a specific origin
 @CrossOrigin
 public class ProjectController {
+
+    /*
+
+    The @Autowired annotation spares you the need to do the wiring by yourself in the XML file (or any other way) and just finds for you what needs to be injected where, and does that for you.
+
+    This tag will do an auto-scanning. Assuming each class that has to become a bean is annotated with a correct annotation like @Component (for simple bean) or @Controller (for a servlet control) or @Repository (for DAO classes)       and these classes are somewhere under the package io.agileintelligence.ppmtool, Spring will find all of these and create a bean for each one. This is done in 2 scans of the classes - the first time it just searches for           classes that need to become a bean and maps the injections it needs to be doing, and on the second scan it injects the beans.
+
+     */
+
     @Autowired
     private ProjectService projectService;
 
@@ -26,11 +37,11 @@ public class ProjectController {
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationErrorService(result);
         if(errorMap != null)
             return errorMap;
-
         Project project1 = projectService.saveOrUpdateProject(project);
         return new ResponseEntity<>(project, HttpStatus.CREATED);
     }
 
+    // Appends the projectId to the end of the link and specifies that it's a GET request
     @GetMapping("/{projectId}")
     public ResponseEntity<?> getProjectId(@PathVariable String projectId) {
         Project project = projectService.findProjectByIdentifier(projectId.toUpperCase());

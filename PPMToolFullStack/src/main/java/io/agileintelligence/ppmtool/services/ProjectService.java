@@ -15,7 +15,6 @@ public class ProjectService {
     @Autowired
     private BacklogRepository backlogRepository;
 
-
     public Project saveOrUpdateProject(Project project) {
         String projectIdentifierUpperCase = project.getProjectIdentifier().toUpperCase();
 

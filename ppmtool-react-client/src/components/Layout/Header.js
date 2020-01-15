@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from "react-router-dom";
   
-
+// Dumb component since it only affects the view. No functions or calls to functions
 class Header extends Component {
     render() {
         return(
@@ -38,8 +38,6 @@ class Header extends Component {
                         </div>
                     </div>
                 </nav>
-
-            
         )
     }
 }

@@ -40,8 +40,7 @@ class ProjectItem extends Component {
                                 
                                     <li className="list-group-item delete" onClick = {this.onDeleteClicked.bind(this, project.projectIdentifier)}>
                                         <i className="fa fa-minus-circle pr-1">Delete Project</i>
-                                    </li>
-                                
+                                    </li>                  
                             </ul>
                         </div>
                     </div>

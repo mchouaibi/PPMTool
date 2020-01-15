@@ -22,8 +22,8 @@ public class ProjectTaskService {
     public ProjectTask addProjectTask(ProjectTask projectTask, String projectIdentifier) {
         try {
             Backlog backlog = backlogRepository.findByProjectIdentifier((projectIdentifier));
-            System.out.println("*********************" + backlog);
             projectTask.setBacklog(backlog);
+
             Integer backLogSequence = backlog.getPTSequence();
             backLogSequence++;
             backlog.setPTSequence(backLogSequence);
@@ -34,10 +34,11 @@ public class ProjectTaskService {
                 projectTask.setPriority(3);
             }
 
-            if(projectTask.getStatus().equals("") || projectTask.getStatus() == null)
+            if(projectTask.getStatus() == null)
                 projectTask.setStatus("TO_DO");
 
             return projectTaskRepository.save(projectTask);
+
         } catch (Exception exception) {
             throw new ProjectNotFoundException("Project is Not Found!");
         }
