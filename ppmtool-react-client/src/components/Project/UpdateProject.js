@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {getProject} from '../../actions/projectActions'
+import {getProject, createProject} from '../../actions/projectActions'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
@@ -117,4 +117,4 @@ const mapStateToProps = state => ({
     project: state.project.project,
     errors: state.errors
 })
-export default connect(mapStateToProps, {getProject})(UpdateProject);
+export default connect(mapStateToProps, {getProject, createProject})(UpdateProject);

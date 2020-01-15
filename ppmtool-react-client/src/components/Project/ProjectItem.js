@@ -15,8 +15,11 @@ class ProjectItem extends Component {
             <div className="container">
                 <div className="card card-body bg-light mb-3">
                     <div className="row">
-                        <div className="col-2">
-                            <span className="mx-auto">{project.projectIdentifier}</span>
+                        <div className="col-2"> 
+                        {
+                            // passes identifier to action
+                        }
+                            <span className="mx-auto">{project.projectIdentifier}</span> 
                         </div>
                         <div className="col-lg-6 col-md-4 col-8">
                             <h3>{project.projectName}</h3>
