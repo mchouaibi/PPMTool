@@ -11,6 +11,8 @@ import UpdateProject from './components/Project/UpdateProject';
 
 function App() {
   return (
+    
+  // The <Provider /> makes the Redux store available to any nested components that have been wrapped in the connect() function
     <Provider store={store}>
       <Router>
         <Header />

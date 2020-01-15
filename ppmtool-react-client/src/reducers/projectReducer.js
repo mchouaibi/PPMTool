@@ -1,5 +1,13 @@
 import {GET_PROJECTS, GET_PROJECT, DELETE_PROJECT} from '../actions/types'
-// Reducer passes to state
+
+/*
+
+    Reducers are pure functions that take the previous state and an action, and return the next state as a new object
+    They don't mutate the current state, but return a new one instead
+    Reducers specify how the application's state changes in response to actions sent to the store
+
+*/
+
 const initialState = {
     projects:[],
     project: {}

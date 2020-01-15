@@ -1,7 +1,11 @@
 import axios from 'axios'
 import {GET_ERRORS, GET_PROJECTS, GET_PROJECT, DELETE_PROJECT} from './types'
 
-// passes to reducer
+/*
+    Actions only describe what happened, but don't describe how the application's state changes
+    Actions are payloads of information that send data from your application to your store. They are the only source of information for the store. You send them to the store using store.dispatch()
+*/
+
 export const createProject=(project, history) => async dispatch => {
     try {
         await axios.post('/api/project', project)

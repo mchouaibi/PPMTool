@@ -15,7 +15,6 @@ class AddProject extends Component {
             errors: {}
         }
 
-
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
     }
@@ -48,6 +47,7 @@ class AddProject extends Component {
     
     render() {
         const {errors} = this.state
+
         return (
             <div className="project">
                 <div className="container">
@@ -80,8 +80,7 @@ class AddProject extends Component {
                                 <div className="form-group">
                                     <input type="date" className="form-control form-control-lg" name="endDate"  value={this.state.endDate} onChange={this.onChange}/>
                                 </div>
-
-                                <input type="submit" className="btn btn-primary btn-block mt-4" />
+                                <input type="submit" className="btn btn-dark btn-block mt-4" />
                             </form>
                         </div>
                     </div>
@@ -91,16 +90,20 @@ class AddProject extends Component {
     }
 }
 
+// Ensures that the props we're receiving have the correct type
 AddProject.propTypes={
     createProject: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired
 }
+
 /*
     Everytime the store is updated, mapStateToProps is called
     Compares old state to new props passed and updates as necessary
 */
+
 const mapStateToProps = state => ({
     errors: state.errors
 })
+
 // Connects a react component to a redux store
 export default connect(mapStateToProps, {createProject})(AddProject)
