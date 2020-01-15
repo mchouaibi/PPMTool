@@ -107,6 +107,7 @@ class UpdateProject extends Component {
     }
 }
 
+// Ensures that the props we're receiving are valid
 UpdateProject.propTypes = {
     getProject: PropTypes.func.isRequired,
     project: PropTypes.object.isRequired,
@@ -117,4 +118,5 @@ const mapStateToProps = state => ({
     project: state.project.project,
     errors: state.errors
 })
+
 export default connect(mapStateToProps, {getProject, createProject})(UpdateProject);

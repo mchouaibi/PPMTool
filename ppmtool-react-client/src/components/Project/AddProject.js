@@ -95,8 +95,12 @@ AddProject.propTypes={
     createProject: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired
 }
-
+/*
+    Everytime the store is updated, mapStateToProps is called
+    Compares old state to new props passed and updates as necessary
+*/
 const mapStateToProps = state => ({
     errors: state.errors
 })
+// Connects a react component to a redux store
 export default connect(mapStateToProps, {createProject})(AddProject)
