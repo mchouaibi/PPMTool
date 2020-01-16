@@ -2,9 +2,6 @@ import React, {Component} from 'react'
 import ProjectTask from './ProjectTasks/ProjectTask'
 
 class Backlog extends Component {
-    componentDidMount() {
-    }
-
     render() {
         const {project_tasks} = this.props
 
