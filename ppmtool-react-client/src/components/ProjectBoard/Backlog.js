@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 
 class Backlog extends Component {
     render() {
@@ -13,8 +14,8 @@ class Backlog extends Component {
                     </div>
 
 {                    //<!-- SAMPLE PROJECT TASK STARTS HERE -->
-}                    <div className="card mb-1 bg-light">
-
+}                    
+                    <div className="card mb-1 bg-light">
                         <div className="card-header text-primary">
                             ID: projectSequence -- Priority: priorityString
                         </div>
