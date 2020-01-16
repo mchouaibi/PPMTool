@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProjectService {
+    // References an instantiation that happened in the container. IOC: Inversion Of Control
     @Autowired
     private ProjectRepository projectRepository;
     @Autowired

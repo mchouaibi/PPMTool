@@ -22,7 +22,7 @@ public class ProjectController {
 
     The @Autowired annotation spares you the need to do the wiring by yourself in the XML file (or any other way) and just finds for you what needs to be injected where, and does that for you.
 
-    This tag will do an auto-scanning. Assuming each class that has to become a bean is annotated with a correct annotation like @Component (for simple bean) or @Controller (for a servlet control) or @Repository (for DAO classes)       and these classes are somewhere under the package io.agileintelligence.ppmtool, Spring will find all of these and create a bean for each one. This is done in 2 scans of the classes - the first time it just searches for           classes that need to become a bean and maps the injections it needs to be doing, and on the second scan it injects the beans.
+    This tag will do an auto-scanning. Assuming each class that has to become a bean is annotated with a correct annotation like @Component (for simple bean) or @Controller (for a servlet control) or @Repository (for DAO (DataAccessObject) classes) and these classes are somewhere under the package io.agileintelligence.ppmtool, Spring will find all of these and create a bean for each one. This is done in 2 scans of the classes - the first time it just searches for classes that need to become a bean and maps the injections it needs to be doing, and on the second scan it injects the beans.
 
      */
 
