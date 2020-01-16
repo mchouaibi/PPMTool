@@ -12,6 +12,30 @@ class Backlog extends Component {
             <ProjectTask key={project_task.id} project_task={project_task}/>
         ))
 
+        let todoItems = []
+        let inProgressItems = []
+        let doneItems = []
+
+        for(let i = 0; i < tasks.length; i++) {
+            if(tasks[i].props.project_task.status === "TO_DO") {
+                todoItems.push(tasks[i])
+            }
+        }
+
+        for(let i = 0; i < tasks.length; i++) {
+            if(tasks[i].props.project_task.status === "IN_PROGRESS") {
+                inProgressItems.push(tasks[i])
+            }
+        }
+
+        for(let i = 0; i < tasks.length; i++) {
+            if(tasks[i].props.project_task.status === "DONE") {
+                doneItems.push(tasks[i])
+            }
+        }
+
+        console.log(inProgressItems)
+
         return(
             <div className="container">
             <div className="row">
@@ -22,7 +46,7 @@ class Backlog extends Component {
                         </div>
                     </div>      
                     
-                    {tasks}
+                    {todoItems}
                 </div>
                 <div className="col-md-4">
                     <div className="card text-center mb-2">
@@ -30,11 +54,7 @@ class Backlog extends Component {
                             <h3>In Progress</h3>
                         </div>
                     </div>
-                    {
-                        // <!-- SAMPLE PROJECT TASK STARTS HERE -->
-
-                   //  <!-- SAMPLE PROJECT TASK ENDS HERE -->
-                }
+                    {inProgressItems}
                 </div>
                 <div className="col-md-4">
                     <div className="card text-center mb-2">
@@ -42,11 +62,7 @@ class Backlog extends Component {
                             <h3>Done</h3>
                         </div>
                     </div>
-                    {
-                       // <!-- SAMPLE PROJECT TASK STARTS HERE -->
-
-                    // <!-- SAMPLE PROJECT TASK ENDS HERE -->
-                }
+                    {doneItems}
                 </div>
             </div>
         </div>
