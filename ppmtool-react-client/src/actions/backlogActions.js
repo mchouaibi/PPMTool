@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_ERRORS, GET_BACKLOG } from './types'
+import { GET_ERRORS, GET_BACKLOG, GET_PROJECT_TASK } from './types'
 
 export const createTask=(backlogId, projectTask, history) => async dispatch => {
     try {
@@ -32,3 +32,31 @@ export const getBacklog=(backlogId) => async dispatch => {
         })
     }
 }
+
+export const getProjectTask = (id, projectTaskId, history) => async dispatch => {
+    try {
+        const res = await axios.get(`/api/backlog/${id}/${projectTaskId}`);
+        dispatch({
+            type: GET_PROJECT_TASK,
+            payload: res.data
+        })
+    } catch (error) {
+        history.push(`/api/backlog/${id}`)
+    }
+}
+
+export const updateProjectTask = (id, projectTaskId, project_task, history) => async dispatch => {
+    try {
+        await axios.patch(`/api/backlog/${id}/${projectTaskId}`, project_task)
+        history.push(`/projectBoard/${id}`)
+        dispatch({
+            type: GET_ERRORS,
+            payload: {}
+        })
+    } catch (error) {
+        dispatch({
+            type: GET_ERRORS,
+            payload: error.response.data
+        })
+    }
+} 

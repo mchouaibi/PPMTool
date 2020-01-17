@@ -30,7 +30,7 @@ public class ProjectTaskService {
             projectTask.setProjectSequence(projectIdentifier + "-" + backLogSequence);
             projectTask.setProjectIdentifier(projectIdentifier);
 
-            if(projectTask.getPriority() == null || projectTask.getPriority() == 0) {
+            if(projectTask.getPriority() == null) {
                 projectTask.setPriority(3);
             }
 
@@ -74,7 +74,7 @@ public class ProjectTaskService {
     }
 
     public ProjectTask updateByProjectSequence(ProjectTask updatedTask, String backlogId, String projectTaskId) {
-        ProjectTask projectTask = findByProjectSequence(backlogId, projectTaskId);
+        ProjectTask projectTask = projectTaskRepository.findByProjectSequence(projectTaskId);
         projectTask = updatedTask;
         return projectTaskRepository.save(projectTask);
     }

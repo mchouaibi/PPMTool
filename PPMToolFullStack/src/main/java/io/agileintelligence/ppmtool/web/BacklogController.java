@@ -48,4 +48,5 @@ public class BacklogController {
         ProjectTask updatedTask = projectTaskService.updateByProjectSequence(projectTask, backlogId, projectTaskId);
         return new ResponseEntity<ProjectTask>(updatedTask, HttpStatus.OK);
     }
+
 }
